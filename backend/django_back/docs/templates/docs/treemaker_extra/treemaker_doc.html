@@ -1,0 +1,7 @@
+{% for doc in documents %}
+    <a href="{% url 'docs-modal-form' %}" class="text-black text-decoration-none">
+        <div class="container mb-3">
+            {{ doc.name }}
+        </div>
+    </a>
+{% endfor %}

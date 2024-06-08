@@ -1,0 +1,12 @@
+get_tree_raw = ('WITH RECURSIVE cte_query '
+                'AS '
+                '( '
+                'SELECT id, name, parent_id, level '
+                'FROM docs_documentcategoriesmodel doc_cats '
+                'WHERE parent_id IS NULL '
+                'UNION ALL '
+                'SELECT doc_cats.id, doc_cats.name, doc_cats.parent_id, doc_cats.level '
+                'FROM docs_documentcategoriesmodel doc_cats '
+                'INNER JOIN cte_query c ON c.id = doc_cats.parent_id '
+                ') '
+                'SELECT * FROM cte_query;')
